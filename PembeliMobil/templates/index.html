@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Machine Learning</title>
+    <!-- <title>Prediksi Machine Learning</title> -->
+    <!-- Tambahkan tautan Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #a18cd1, #fbc2eb); /* Gradient dari ungu ke pink sebagai latar belakang */
+             /* Warna teks */
+
+            font-family: 'Arial', sans-serif; /* Ganti dengan font yang Anda inginkan */
+        }
+    
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 50px;
+        }
+    
+        h1 {
+            color: #d316d3; /* Warna teks judul */
+            text-align: center;
+            font-weight: bolder;
+        }
+        
+        h6 {
+            
+            text-align: center;
+            font-weight: bolder;
+            padding: 20px;
+            /* margin-top: 50px; */
+        }
+    
+
+        label {
+            font-weight: bold;
+            color: black; /* Warna teks label */
+        }
+    
+        button {
+            margin-top: 20px;
+            background-color: #d316d3; /* Warna tombol */
+            color: #fff; /* Warna teks tombol */
+            text-align: center;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #a20ca2; /* Warna tombol saat dihover */
+        }
+    
+        p {
+            font-weight: bold;
+            color: #1c1d1a; /* Warna teks paragraf */
+            margin-top: 10px;
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Prediksi Machine Learning</h1>
+
+        <form action="/" method="post">
+            <!-- {% if dataInputan[0] =='' %} -->
+            <div class="form-group">
+                <label for="Usia">Usia</label>
+                <input type="text" class="form-control" id="Usia" name="Usia" placeholder="Masukkan Usia" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="Status">Status</label>
+                <input type="text" class="form-control" id="Status" name="Status" placeholder="Masukkan Status ((0=single, 1=menikah, 2=menikah mempunyai anak, 3=duda/janda))" required/>
+            </div>
+            <div class="form-group">
+                <label for="Kelamin">Jenis Kelamin</label>
+                <input type="text" class="form-control" id="Kelamin" name="Kelamin" placeholder="(0='laki', 1='Perempuan')" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="Penghasilan">Penghasilan</label>
+                <input type="text" class="form-control" id="Penghasilan" name="Penghasilan" placeholder="Masukkan Penghasilan" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="Memiliki_Mobil">Memiliki Mobil</label>
+                <input type="text" class="form-control" id="Memiliki_Mobil"  name="Memiliki_Mobil" placeholder="Apakah memiliki Mobil? (1=Ya, 0=tidak)" required/>
+            </div>
+            <div class="form-group">
+                <label for="metode">Pilih Metode</label>
+                <select class="form-select form-control" name="metode">
+                    <option value="knn">KNN</option>
+                    <option value="SVM">SVM</option>
+                    <!-- <option value="naive_bayes">Naive Bayes</option>
+                    <option value="tree">Tree</option>
+                    <option value="random_forest">Random Forest</option> -->
+                  </select>
+            </div>
+            {%else %} -->
+        <div class="form-group">
+                <label for="Usia">Usia</label>
+                <input type="text" class="form-control" id="Usia" value="{{dataInputan[0]}}" name="Usia" placeholder="Masukkan Usia Anda" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="Status">Status</label>
+                <input type="text" class="form-control" id="Status" value="{{dataInputan[1]}}" name="Status" placeholder="Masukkan Status Anda Sekarang!"required/>
+                <small class="info">0 = single <br> 1 = menikah <br> 2 = menikah mempunyai anak <br> 3 = duda/janda </small>
+            </div>
+            <div class="form-group">
+                <label for="Kelamin">Jenis Kelamin</label>
+                <input type="text" class="form-control" id="Kelamin" value="{{dataInputan[2]}}" name="Kelamin" placeholder="Masukkan Jenis Kelamin" required/>
+                <small class ="info">0 = Laki-Laki<br>1 = Perempuan </small>
+            </div>
+
+            <div class="form-group">
+                <label for="Penghasilan">Penghasilan</label>
+                <input type="text" class="form-control" id="Penghasilan" value="{{dataInputan[3]}}" name="Penghasilan" placeholder="Masukkan Penghasilan" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="Memiliki_Mobil">Memiliki Mobil</label>
+                <input type="text" class="form-control" id="Memiliki_Mobil" value="{{dataInputan[4]}}" name="Memiliki_Mobil" placeholder="Apakah Anda memiliki Mobil?" required/>
+                <small class= "info">0 = Tidak <br> 1 = Ya
+            </div>
+
+            <div class="form-group">
+                <label for="metode">Pilih Metode</label>
+                <select class="form-select form-control" name="metode">
+                    <option value="{{dataInputan[2]}}">{{dataInputan[5]}}</option>
+                    <option value="knn">KNN</option>
+                    <option value="SVM">SVM</option>
+                    <!-- <option value="naive_bayes">Naive Bayes</option>
+                    <option value="tree">Tree</option>
+                    <option value="random_forest">Random Forest</option> -->
+                  </select>
+            </div>
+          
+            {%endif%}
+            <div class="btnb" style="text-align: center;"><button type="submit" class="btn">Prediksi</button>  </div>  
+            {%if result == 0 %}
+                <h6>Hasil Prediksi : Tidak membeli mobil dengan menggunakan metode {{dataInputan[5]}}</h6>
+            {%elif result== ''%}
+        
+            {%else%}
+            <!-- <button type="submit" class="btn">Prediksi</button> -->
+                <h6>Hasil Prediksi : Membeli Mobil dengan menggunakan metode {{dataInputan[5]}}</h6>
+            {%endif%}
+                
+            <!-- <button type="submit" class="btn">Prediksi</button> -->
+        </form>
+    </div>
+</body>
+</html>
